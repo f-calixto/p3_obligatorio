@@ -13,5 +13,5 @@ El sistema fue descompuesto en componentes modulares, seleccionando los Tipos Ab
 
 ## 🚀 Requisitos e Instalación
 
-Para compilar y ejecutar este proyecto de forma local, se requiere un entorno compatible con C++ (como **Code::Blocks** o la terminal con `g++`).
+Para compilar y ejecutar este proyecto de forma local, se requiere un entorno compatible con C++ (como **Code::Blocks**)
 
