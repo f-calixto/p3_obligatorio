@@ -6,11 +6,12 @@
 
 const int MAX = 80;
 typedef char* string;
+
 const string rojo = "\033[31m";
 const string verde = "\033[32m";
 const string reset = "\033[0m";
 
-/* crea un string vac�o */
+/* crea un string vacio */
 void strcrear(string& s);
 
 /* libera la memoria usada por el string */
@@ -40,14 +41,8 @@ void printRojo(string s);
 /* Imprime el string en verde por pantalla*/
 void printVerde(string s);
 
-/* determina si s1 es alfab�ticamente menor que s2 */
-boolean strmen(string s1, string s2);
-
 /* determina si los strings s1 y s2 son iguales */
 boolean streq(string s1, string s2);
-
-/* convierte el string s a minuscula y lo almacena en resultado */
-void strMinus(string s, string& resultado);
 
 /* Indica si el string representa un entero valido */
 boolean esEnteroValido(string s);
