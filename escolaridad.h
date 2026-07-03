@@ -1,10 +1,10 @@
 #ifndef ESCOLARIDAD_H
 #define ESCOLARIDAD_H
 
-// Escolaridad (Secuencia Simple)
-
 #include "boolean.h"
 #include "curso.h"
+
+// ================= Escolaridad (Secuencia Simple) ===============
 
 typedef struct nodoEsc {
     Curso info;
