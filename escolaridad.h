@@ -17,9 +17,12 @@ typedef nodoEscolaridad* Escolaridad;
 void crear(Escolaridad& e);
 void insFront(Escolaridad& s, Curso c);
 boolean esVacia(Escolaridad s);
+// Precondición: la secuencia no es vacía.
 Curso primero(Escolaridad s);
+// Precondición: la secuencia no es vacía
 Escolaridad resto(Escolaridad& s);
 int largo(Escolaridad e);
+// Precondición: El largo de la secuencia es mayor o igual a K.
 Curso kEsimo(Escolaridad e, int k);
 
 // ================= EXTENSIONES =================
