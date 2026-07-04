@@ -23,7 +23,9 @@ void gradoVertice(Grafo g, int u);
 // ================= EXTENSIONES =================
 // Precondición: v y u pertenencen al grafo
 boolean hayCamino(Grafo g, int v, int u);
-// Precondición: u pertenence al grafo.
+// Precondición: u pertenence al grafo
 void listarPreviaturas(Grafo g, int u);
+// Precondición: u pertenence al grafo
+void obtenerPrevias(Grafo g, int u, int res[], int& cant);
 
 #endif
