@@ -26,6 +26,8 @@ boolean hayCamino(Grafo g, int v, int u);
 // Precondición: u pertenence al grafo
 void listarPreviaturas(Grafo g, int u);
 // Precondición: u pertenence al grafo
-void obtenerPrevias(Grafo g, int u, int res[], int& cant);
+void obtenerPrevias(Grafo g, int u, int res[],
+                    int& cant);  // --> capaz podriamos devolver un "Escolaridad
+                                 // previas" (definir)
 
 #endif
