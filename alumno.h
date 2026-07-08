@@ -14,9 +14,7 @@ typedef struct {
     Escolaridad escolaridad;
 } Alumno;
 
-void crearAlumno(Alumno& a, int ci, string nombre, string apellido,
-                 string telefono);
-
+void crearAlumno(Alumno& a);
 int obtenerCedula(Alumno a);
 void obtenerNombre(Alumno a, string& s);
 void obtenerApellido(Alumno a, string& s);

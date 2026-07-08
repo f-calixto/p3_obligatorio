@@ -11,9 +11,7 @@ typedef struct {
     boolean optativa;
 } Asignatura;
 
-void crearAsignatura(Asignatura& a, int numero, string nombre, int horas,
-                     boolean optativa);
-
+void crearAsignatura(Asignatura& a);
 int obtenerNumero(Asignatura a);
 string obtenerNombre(Asignatura a);
 int obtenerHoras(Asignatura a);

@@ -12,7 +12,7 @@ typedef struct {
     int nota;
 } Curso;
 
-void crearCurso(Curso& c, int num, string nombre, string fecha, int nota);
+void crearCurso(Curso& c);
 
 int obtenerNumAsignatura(Curso c);
 string obtenerNombreAsigantura(Curso c);
