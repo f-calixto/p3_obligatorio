@@ -8,12 +8,12 @@ typedef struct {
     int numero;
     string nombre;
     int horas;
-    boolean optativa;
+    boolean esOptativa;
 } Asignatura;
 
 void crearAsignatura(Asignatura& a);
 int obtenerNumero(Asignatura a);
-string obtenerNombre(Asignatura a);
+void obtenerNombre(Asignatura a, string& s);
 int obtenerHoras(Asignatura a);
 boolean esOptativa(Asignatura a);
 
