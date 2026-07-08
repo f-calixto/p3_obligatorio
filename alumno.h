@@ -1,33 +1,26 @@
-#ifndef ALUMNO_H_INCLUDED
-#define ALUMNO_H_INCLUDED
+#ifndef ALUMNO_H
+#define ALUMNO_H
 
+#include "boolean.h"
+#include "curso.h"
+#include "escolaridad.h"
 #include "string.h"
-#include "escolaridad.h"  // <--- ¡Esto es lo que maneja sus cursos cronológicamente!
 
 typedef struct {
-    long int cedula;
-    str nombre;
-    str apellido;
-    int telefono;
-    Escolaridad historiaAcademica; // El TAD Secuencia LPPF
+    int ci;
+    string nombre;
+    string apellido;
+    string telefono;
+    Escolaridad escolaridad;
 } Alumno;
 
-/// Primitiva de carga (Crear Alumno)
-void crearAlumno(Alumno &alum, long int ci, str nom, str ape, str tel);
+void crearAlumno(Alumno& a, int ci, string nombre, string apellido,
+                 string telefono);
 
-                ///SELECTORAS
-long int obtenerCedula(Alumno alum);
+int obtenerCedula(Alumno a);
+void obtenerNombre(Alumno a, string& s);
+void obtenerApellido(Alumno a, string& s);
+void obtenerTelefono(Alumno a, string& s);
+Escolaridad obtenerEscolaridad(Alumno a);
 
-void obtenerNombreAlumno(Alumno alum, str &nom);
-
-void obtenerApellidoAlumno(Alumno alum, str &ape);
-
-int obtenerTelefonoAlumno(Alumno alum);
-
-void obtenerEscolaridad(Alumno alum, Escolaridad &esc);
-                ///SELECTORAS
-
-
-
-
-#endif // ALUMNO_H_INCLUDED
+#endif

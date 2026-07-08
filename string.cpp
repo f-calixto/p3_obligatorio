@@ -1,124 +1,232 @@
 #include "string.h"
 
-
-
-///carga el string con caracteres
-void strscan (str &s)
-{
-   int i=0;
-   char c;
-   scanf("%c", &c);
-   while((c!= '\n') && (i < MAX -1))
-   {
-       s[i] = c;
-       i++;
-       scanf ("%c", &c);
-   }
-    s[i] = '\0';
+void strcrear(string& s) {
+    s = new char[1];
+    s[0] = '\0';
 }
 
+void strdestruir(string& s) {
+    delete[] s;
+    s = NULL;
+}
 
+int strlar(string s) {
+    int i = 0;
+    while (s[i] != '\0') i++;
+    return i;
+}
 
-///despliega por pantalla el string
-void strprint (str s)
-{
-    int i=0;
-    while ((s[i] != '\0') && (i<MAX))
-    {
+void strcop(string& s1, string s2) {
+    int i = 0;
+    int largo = strlar(s2) + 1;
+    delete[] s1;
+    s1 = new char[largo];
+    while (s2[i] != '\0') {
+        s1[i] = s2[i];
+        i++;
+    }
+    s1[i] = '\0';
+}
+
+void scan(string& s) {
+    string aux = new char[MAX];
+    int i = 0;
+    char c;
+    scanf(" %c", &c);
+    while (c != '\n' && i < MAX - 1) {
+        aux[i] = c;
+        i++;
+        scanf("%c", &c);
+    }
+    aux[i] = '\0';
+    strcop(s, aux);
+    strdestruir(aux);
+}
+
+void strcon(string& s1, string s2) {
+    string aux;
+    strcrear(aux);
+    strcop(aux, s1);
+    int largo = strlar(s1) + strlar(s2) + 1;
+    if (largo > MAX) largo = MAX;
+    delete[] s1;
+    s1 = new char[largo];
+    int i = 0;
+    while (aux[i] != '\0') {
+        s1[i] = aux[i];
+        i++;
+    }
+    int j = 0;
+    while (s2[j] != '\0' && i < MAX - 1) {
+        s1[i] = s2[j];
+        i++;
+        j++;
+    }
+    s1[i] = '\0';
+    strdestruir(aux);
+}
+
+void strswp(string& s1, string& s2) {
+    string aux;
+    aux = s1;
+    s1 = s2;
+    s2 = aux;
+}
+
+void print(string s) {
+    int i = 0;
+    while (s[i] != '\0') {
         printf("%c", s[i]);
         i++;
     }
 }
 
-
-
-///devuelve cant caracteres
-int strlar (str s)
-{
-  int i=0;
-  while (s[i] != '\0')
-    i++;
-  return i;
+void printRojo(string s) {
+    print(rojo);
+    print(s);
+    print(reset);
 }
 
-
-
-///recibe dos strings y devuelva TRUE si ambos strings son iguales o FALSE en caso contrario.
-boolean streq (str s, str z)
-{
-    boolean iguales = TRUE;
-    int i =0;
-
-    while ((iguales) && (s[i] != '\0') && (z[i] != '\0'))
-    {
-        if(s[i] != z[i])
-            iguales = FALSE;
-        else
-            i++;
-    }
-    if ((s[i] != '\0') || (z[i] != '\0'))
-        iguales = FALSE;
-    return iguales;
+void printVerde(string s) {
+    print(verde);
+    print(s);
+    print(reset);
 }
 
-
-
-///recibe dos string y devuelve TRUE si el primero de ellos es menor (en orden alfabetico) o FALSE en caso contrario
-boolean strmen (str s, str z)
-{
-    int i =0;
-    boolean encontre = FALSE;
-    boolean menor = FALSE;
-    while((!encontre) && (s[i] != '\0') && (z[i] != '\0'))
-    {
-        if (s[i] != z[i])
-            encontre = TRUE;
-        if (s[i] < z[i])
-            menor = TRUE;
+boolean strmen(string s1, string s2) {
+    int i = 0;
+    while (s1[i] != '\0' && s2[i] != '\0') {
+        if (s1[i] < s2[i])
+            return TRUE;
+        else if (s1[i] > s2[i])
+            return FALSE;
         i++;
     }
-    if ((!encontre) && (z[i] != '\0'))
-        menor = TRUE;
-    return menor;
+    if (s1[i] == '\0' && s2[i] != '\0') return TRUE;
+
+    return FALSE;
 }
 
-
-
-///recibe dos string y copia el segundo en el primero
-void strcop (str &s, str z)
-{
-    int i =0;
-    while(z[i] != '\0')
-    {
-        s[i] = z[i];
+boolean streq(string s1, string s2) {
+    int i = 0;
+    while (s1[i] != '\0' && s2[i] != '\0') {
+        if (s1[i] != s2[i]) return FALSE;
         i++;
     }
-    s[i] = '\0';
-}
-
-
-
-///recibe dos string y concatena el segundo al final del primero
-void strcon (str &s, str z)
-{
-   int i = strlar(s);
-   int j =0;
-    while ((i < MAX - 1) && (z[j] != '\0'))
-    {
-        s[i] = z[j];
-        i++;
-        j++;
+    if ((s1[i] == '\0' && s2[i] == '\0')) {
+        return TRUE;
+    } else {
+        return FALSE;
     }
-    s[i] = '\0';
 }
 
+void strMinus(string s, string& resultado) {
+    strcop(resultado, s);
+    int i = 0;
+    while (resultado[i] != '\0') {
+        if (resultado[i] >= 'A' && resultado[i] <= 'Z') {
+            resultado[i] = resultado[i] + 32;
+        }
+        i++;
+    }
+}
 
+boolean esEnteroValido(string s) {
+    int i = 0;
 
-///recibe dos string y devuelve el primero en el segundo y viceversa
-void strswap (str &s, str &z)
-{
-    str aux;
-    strcop (aux,s);
-    strcop(s,z);
-    strcop (z,aux);
+    if (s[0] == '\0') {
+        return FALSE;
+    }
+
+    // Verifica signo negativo opcional
+    if (s[0] == '-') {
+        i = 1;
+    }
+
+    if (s[i] == '\0') {
+        return FALSE;
+    }
+
+    // Verificar que todos los caracteres sean d�gitos
+    while (s[i] != '\0') {
+        if (s[i] < '0' || s[i] > '9') {
+            return FALSE;
+        }
+        i++;
+    }
+
+    return TRUE;
+}
+
+int strAEntero(string s) {
+    int resultado = 0;
+    int i = 0;
+    boolean esNegativo = FALSE;
+
+    if (s[0] == '\0') {
+        return 0;
+    }
+
+    if (s[0] == '-') {
+        esNegativo = TRUE;
+        i = 1;
+    }
+
+    while (s[i] != '\0') {
+        resultado = resultado * 10 + (s[i] - '0');
+        i++;
+    }
+
+    if (esNegativo) {
+        resultado = resultado * -1;
+    }
+
+    return resultado;
+}
+
+void Bajar_String(string s, FILE* f) {
+    int i = 0;
+    while (s[i] != '\0') {
+        fwrite(&s[i], sizeof(char), 1, f);
+        i++;
+    }
+    char fin = '\0';
+    fwrite(&fin, sizeof(char), 1, f);
+}
+
+void Levantar_String(string& s, FILE* f) {
+    string aux = new char[MAX];
+    char buffer;
+    int i = 0;
+
+    fread(&buffer, sizeof(char), 1, f);
+
+    while (buffer != '\0' && i < MAX - 1) {
+        aux[i] = buffer;
+        i++;
+        fread(&buffer, sizeof(char), 1, f);
+    }
+
+    aux[i] = '\0';
+    strcrear(s);
+    strcop(s, aux);
+
+    delete[] aux;
+}
+
+boolean esOperador(string str) {
+    if (streq(str, "+") || streq(str, "-") || streq(str, "/") ||
+        streq(str, "*")) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+boolean esEnteroPositivo(string str) {
+    if (esEnteroValido(str) && strAEntero(str) > 0) {
+        return TRUE;
+    }
+
+    return FALSE;
 }

@@ -1,54 +1,34 @@
-#ifndef ESCOLARIDAD_H_INCLUDED
-#define ESCOLARIDAD_H_INCLUDED
+#ifndef ESCOLARIDAD_H
+#define ESCOLARIDAD_H
 
-
-
-/*
- * TAD  LPPF "Escolaridad"
- * -----------------------------------------------------------------------------------------
- * ¿Qué representa?
- * Representa la "historia académica" o el boletín de calificaciones de un alumno individual.
- * Cada alumno del sistema tiene su propia Escolaridad independiente.
- *
- * ¿Cómo se implementa?
- * A diferencia de Asignaturas (que es un arreglo estático), Escolaridad es una estructura
- * DINÁMICA (una Lista Enlazada de nodos LPPF). Esto es así porque la cantidad de materias que
- * puede cursar y aprobar un alumno a lo largo de los años es variable y no tiene un tope fijo.
- * -----------------------------------------------------------------------------------------
- */
-
-
-
-#include "curso.h"
 #include "boolean.h"
+#include "curso.h"
 
-//1. Nodo de nuestra lista de cursos
-typedef struct nodoC {
+// ================= Escolaridad (Secuencia Simple) ===============
+
+typedef struct nodoEsc {
     Curso info;
-    nodoC * sig;
-} Nodo;
+    nodoEsc* sig;
+} nodoEscolaridad;
 
-//2. LPPF Escolaridad
-typedef struct {
-    Nodo * prim;
-    Nodo * ult;
-} Escolaridad;
+typedef nodoEscolaridad* Escolaridad;
 
-        ///Primitivas del TAD Secuencia (LPPF)///
+// ================= PRIMITIVAS ==================
+void crear(Escolaridad& e);
+void insFront(Escolaridad& s, Curso c);
+boolean esVacia(Escolaridad s);
+// PrecondiciÃ³n: la secuencia no es vacÃ­a.
+Curso primero(Escolaridad s);
+// PrecondiciÃ³n: la secuencia no es vacÃ­a
+Escolaridad resto(Escolaridad& s);
+int largo(Escolaridad e);
+// PrecondiciÃ³n: El largo de la secuencia es mayor o igual a K.
+Curso kEsimo(Escolaridad e, int k);
 
-///Inicializa la LPPF escolaridad (ambos punteros en NULL)
-void inicializarEscolaridad(Escolaridad &esc);
+// ================= EXTENSIONES =================
+void insBack(Escolaridad& s, Curso c);
+Curso ultimo(Escolaridad s);
+boolean estaAprobada(Escolaridad s, int numAsignatura);
+int cantidadAprobados(Escolaridad s);
 
-///Inserta un curso al final de la secuencia (cronológicamente el último realizado) (InsBack LPPF)
-void insertarCursoFinal(Escolaridad &esc, Curso c);
-
-///Determina si la escolaridad no tiene ningún curso registrado
-boolean esEscolaridadVacia(Escolaridad esc);
-
-
-///Muesrta la LPPF imprimiendo cada curso
-void mostrarEscolaridad(Escolaridad esc);
-
-
-
-#endif // ESCOLARIDAD_H_INCLUDED
+#endif

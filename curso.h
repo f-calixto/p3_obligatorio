@@ -1,31 +1,24 @@
-#ifndef CURSO_H_INCLUDED
-#define CURSO_H_INCLUDED
+#ifndef CURSO_H
+#define CURSO_H
 
-#include "asignatura.h"
-#include "Fecha.h"
+#include "boolean.h"
+#include "fecha.h"
+#include "string.h"
 
-typedef struct
-{
-    Asignatura materia;
-    Fecha fechaFinalizacion;
-    int calificacion;
+typedef struct {
+    int numAsignatura;
+    string nombreAsignatura;
+    Fecha fechaFin;
+    int nota;
 } Curso;
 
+void crearCurso(Curso& c, int num, string nombre, string fecha, int nota);
 
-///Crea un curso
-void crearCurso(Curso &c, Asignatura asig, Fecha fec, int nota);
+int obtenerNumAsignatura(Curso c);
+string obtenerNombreAsigantura(Curso c);
+string obtenerFechaFin(Curso c);
+int obtenerNota(Curso c);
 
-///Mostrar curso
-void imprimirCurso(Curso c);
+boolean estaAprobado(Curso c);
 
-            ///SELCTORAS CURSO///
-void obtenerAsignaturaCurso(Curso c, Asignatura &asig);
-
-void obtenerFechaCurso(Curso c, Fecha &fec);
-
-int obtenerCalificacion(Curso c);
-
-///devuelve si el curso esta aprobado (si calificacion >=6)
-boolean esCursoAprobado(Curso c);
-
-#endif // CURSO_H_INCLUDED
+#endif

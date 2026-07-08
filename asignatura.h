@@ -1,29 +1,22 @@
-#ifndef ASIGNATURA_H_INCLUDED
-#define ASIGNATURA_H_INCLUDED
+#ifndef ASIGNATURA_H
+#define ASIGNATURA_H
+
+#include "boolean.h"
 #include "string.h"
 
-typedef struct
-{
+typedef struct {
     int numero;
-    str nombre;
+    string nombre;
     int horas;
-    boolean esOptativa;
+    boolean optativa;
 } Asignatura;
 
+void crearAsignatura(Asignatura& a, int numero, string nombre, int horas,
+                     boolean optativa);
 
-///Crea una asignatura
-void crearAsignatura(Asignatura &a ,int num, str nom, int hrs, boolean optativa);
-
-///Operación auxiliar para asignatura
-void imprimirAsignatura(Asignatura a);
-
-        ///SELECTORAS ASIGNATURA
 int obtenerNumero(Asignatura a);
-
-void obtenerNombre(Asignatura a, str &nom);
-
+string obtenerNombre(Asignatura a);
 int obtenerHoras(Asignatura a);
+boolean esOptativa(Asignatura a);
 
-boolean esAsignaturaOptativa(Asignatura a);
-
-#endif // ASIGNATURA_H_INCLUDED
+#endif

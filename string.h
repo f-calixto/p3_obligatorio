@@ -1,34 +1,56 @@
 #ifndef STRING_H_INCLUDED
 #define STRING_H_INCLUDED
 #include <stdio.h>
+
 #include "boolean.h"
 
-const int MAX =80;
-typedef char str[MAX];
+const int MAX = 80;
+typedef char* string;
 
-///carga el string con caracteres
-void strscan (str &s);
+const string rojo = "\033[31m";
+const string verde = "\033[32m";
+const string reset = "\033[0m";
 
-///despliega por pantalla el string
-void strprint (str s);
+/* crea un string vacio */
+void strcrear(string& s);
 
-///devuelve cant caracteres
-int strlar (str s);
+/* libera la memoria usada por el string */
+void strdestruir(string& s);
 
-///recibe dos strings y devuelva TRUE si ambos strings son iguales o FALSE en caso contrario.
-boolean streq (str s, str z);
+/* devuelve el largo del string s */
+int strlar(string s);
 
-///recibe dos string y devuelve TRUE si el primero de ellos es menor (en orden alfabetico) o FALSE en caso contrario
-boolean strmen (str s, str z);
+/* copia el contenido del string s2 en s1 */
+void strcop(string& s1, string s2);
 
-///recibe dos string y copia el segundo en el primero
-void strcop (str &s, str z);
+/* lee el string s desde teclado */
+void scan(string& s);
 
-///recibe dos string y concatena el segundo al final del primero
-void strcon (str &s, str z);
+/* concatena el contenido de s2 al final de s1 */
+void strcon(string& s1, string s2);
 
-///recibe dos string y devuelve el primero en el segundo y viceversa
-void strswap (str &s, str &z);
+/* intercambia los contenidos de s1 y s2 */
+void strswp(string& s1, string& s2);
 
+/* imprime el string s por pantalla */
+void print(string s);
 
-#endif // STRING_H_INCLUDED
+/* Imprime el string en rojo por pantalla*/
+void printRojo(string s);
+
+/* Imprime el string en verde por pantalla*/
+void printVerde(string s);
+
+/* determina si los strings s1 y s2 son iguales */
+boolean streq(string s1, string s2);
+
+/* Indica si el string representa un entero valido */
+boolean esEnteroValido(string s);
+
+boolean esEnteroPositivo(string str);
+
+// convierte el string s a un entero
+// precondicion: es un entero valido
+int strAEntero(string s);
+
+#endif  // STRING_H_INCLUDED

@@ -2,12 +2,6 @@
 #define BOOLEAN_H_INCLUDED
 #include <stdio.h>
 
+typedef enum { FALSE, TRUE } boolean;
 
-typedef enum {FALSE, TRUE} boolean;
-
-void cargarboolean (boolean &b);
-
-void mostrarboolean (boolean b);
-
-
-#endif // BOOLEAN_H_INCLUDED
+#endif  // BOOLEAN_H_INCLUDED
