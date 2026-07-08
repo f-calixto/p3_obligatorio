@@ -1,5 +1,7 @@
 # Obligatorio - Programación III (Curso 2026)
 
+### [Documento entregable](https://docs.google.com/document/d/1utTEFVEnvfG7nPndZRbMEB8wVMTv_oGm6T7fAw_pSfs/edit?tab=t.0) 
+
 Este proyecto consiste en el diseño e implementación de un sistema de gestión académica para la Universidad, enfocado en el manejo eficiente de planes de estudio, asignaturas, alumnos e historiales de escolaridad utilizando Estructuras de Datos Avanzadas.
 
 ## 🛠️ Modelado y Estructuras Utilizadas
