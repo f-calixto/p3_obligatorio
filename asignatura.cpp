@@ -1,9 +1,6 @@
 #include "asignatura.h"
 
 void crearAsignatura(Asignatura& a) {
-    printf("\nIngrese numero de asignatura: ");
-    scanf("%d", &a.numero);
-
     printf("Ingrese nombre de la asignatura: ");
     strcrear(a.nombre);
     scan(a.nombre);
@@ -31,3 +28,5 @@ void obtenerNombre(Asignatura a, string& s) {
 int obtenerHoras(Asignatura a) { return a.horas; }
 
 boolean esOptativa(Asignatura a) { return a.esOptativa; }
+
+void asignarNumero(Asignatura& a, int nro) { a.numero = nro; }

@@ -16,5 +16,6 @@ int obtenerNumero(Asignatura a);
 void obtenerNombre(Asignatura a, string& s);
 int obtenerHoras(Asignatura a);
 boolean esOptativa(Asignatura a);
+void asignarNumero(Asignatura& a, int nro);
 
 #endif
