@@ -51,10 +51,10 @@ void gradoVertice(Grafo g, int u)
 
 
 
-void dfs (Grafo g, int actual, int destino, boolean visitados[N])
+void dfs (Grafo g, int actual, int destino, boolean visitados[N], boolean encontrado)
  {
     
-     boolean encontrado = FALSE;
+      encontrado = FALSE;
      visitados[actual] = TRUE;
     
      if (actual == destino)
