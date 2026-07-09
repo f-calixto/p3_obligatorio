@@ -16,7 +16,7 @@ void crearAlumno(Alumno& a) {
     strcrear(a.telefono);
     scan(a.telefono);
 
-    a.escolaridad = NULL;
+    crearEscolaridad(a.escolaridad);
 }
 
 int obtenerCedula(Alumno a) { return a.ci; }
