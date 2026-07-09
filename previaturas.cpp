@@ -1,6 +1,6 @@
 #include "previaturas.h"
 
-void crear(Grafov&g)
+void crear(Grafo &g)
 {
     int i=0;
     for(i=0; i<N; i++)
@@ -28,7 +28,7 @@ boolean perteneceArista(Grafo g, int u, int v)
 }
 
 // Precondición: la arista no pertenece al grafo
-void insertarArista(Grafo& g, int u, int v)
+void insertarArista(Grafo &g, int u, int v)
 {
     g[u][v] = TRUE;
 }
@@ -51,10 +51,13 @@ void gradoVertice(Grafo g, int u)
 
 
 
-void dfs (Grafo g, int actual, int destino, boolean visitados[N], boolean& encontrado)
+void dfs (Grafo g, int actual, int destino, boolean visitados[N])
  {
-    visitados[actual] = TRUE;
-    if (actual == destino)
+    
+     boolean encontrado = FALSE;
+     visitados[actual] = TRUE;
+    
+     if (actual == destino)
     {
         encontrado = TRUE;
     }
