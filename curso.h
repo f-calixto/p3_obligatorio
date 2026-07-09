@@ -13,12 +13,10 @@ typedef struct {
 } Curso;
 
 void crearCurso(Curso& c);
-
 int obtenerNumAsignatura(Curso c);
-string obtenerNombreAsigantura(Curso c);
-string obtenerFechaFin(Curso c);
+void obtenerNombreAsigantura(Curso c, string& s);
+Fecha obtenerFechaFin(Curso c);
 int obtenerNota(Curso c);
-
 boolean estaAprobado(Curso c);
 
 #endif
