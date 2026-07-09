@@ -52,7 +52,9 @@ void gradoVertice(Grafo g, int u);
 boolean hayCamino(Grafo g, int v, int u);
 
 // Precondición: u pertenence al grafo
+//imrpimre por pantalla la lista d los numeros de las asignaturas previas a u
 void listarPreviaturas(Grafo g, int u);
+
 // Precondición: u pertenence al grafo
 void obtenerPrevias(Grafo g, int u, int res[],
                     int& cant);  // --> capaz podriamos devolver un "Escolaridad
