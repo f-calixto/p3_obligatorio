@@ -19,7 +19,7 @@ boolean perteneceVertice(Grafo g, int u)
     return FALSE;
 }
 
-boolean perteneceArista(Grafo g, int u, int v)
+boolean perteneceArista (Grafo g, int u, int v)
 {
     if (perteneceVertice(g,u) && perteneceVertice(g,v))
         return g[u][v];
@@ -28,14 +28,14 @@ boolean perteneceArista(Grafo g, int u, int v)
 }
 
 // Precondición: la arista no pertenece al grafo
-void insertarArista(Grafo &g, int u, int v)
+void insertarArista (Grafo &g, int u, int v)
 {
     g[u][v] = TRUE;
 }
 
 
 // Precondición: el vértice pertenece al grafo.
-void gradoVertice(Grafo g, int u)
+void gradoVertice (Grafo g, int u)
 {
     int cantHabilita = 0;
     int cantPrevias = 0;
@@ -76,7 +76,7 @@ void dfs (Grafo g, int actual, int destino, boolean visitados[N], boolean encont
 
 // Precondición: v y u pertenecen al grafo.
 // determina si v es olbigatoria para cursar u
-boolean hayCamino(Grafo g, int v, int u)
+boolean hayCamino (Grafo g, int v, int u)
 {
     boolean visitados[N];
     for (int i = 0; i < N; i++)
@@ -89,6 +89,7 @@ boolean hayCamino(Grafo g, int v, int u)
 }
 
 // Precondición: u pertenence al grafo
+//imrpimre por pantalla la lista d los numeros de las asignaturas previas a u
 void listarPreviaturas(Grafo g, int u)
 {
     boolean tienePrevias = FALSE;
@@ -110,8 +111,8 @@ void listarPreviaturas(Grafo g, int u)
 
 
 // Precondición: u pertenece al grafo.
-// Carga en el arreglo "res" todos los números de materias que son previas de u
-void obtenerPrevias(Grafo g, int u, int res[], int &cant)
+// Carga en el arreglo "res" todos los números de materias que son previas de u ,
+void obtenerPrevias (Grafo g, int u, int res[], int &cant)
  {
     cant = 0;
     for (int i = 0; i < N; i++)
