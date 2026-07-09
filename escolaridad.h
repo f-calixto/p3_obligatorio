@@ -17,7 +17,7 @@ typedef struct {
 } Escolaridad;
 
 // ================= PRIMITIVAS ==================
-void crear(Escolaridad& e);
+void crearEscolaridad(Escolaridad& e);
 void insFront(Escolaridad& e, Curso c);
 boolean esVacia(Escolaridad e);
 // Precondición: la secuencia no es vacía.

@@ -1,6 +1,6 @@
 #include "escolaridad.h"
 
-void crear(Escolaridad& e) {
+void crearEscolaridad(Escolaridad& e) {
     e.prim = NULL;
     e.ult = NULL;
 }
