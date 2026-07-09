@@ -11,24 +11,27 @@ typedef struct nodoEsc {
     nodoEsc* sig;
 } nodoEscolaridad;
 
-typedef nodoEscolaridad* Escolaridad;
+typedef struct {
+    nodoEscolaridad* prim;
+    nodoEscolaridad* ult;
+} Escolaridad;
 
 // ================= PRIMITIVAS ==================
 void crear(Escolaridad& e);
-void insFront(Escolaridad& s, Curso c);
-boolean esVacia(Escolaridad s);
+void insFront(Escolaridad& e, Curso c);
+boolean esVacia(Escolaridad e);
 // Precondición: la secuencia no es vacía.
-Curso primero(Escolaridad s);
+Curso primero(Escolaridad e);
 // Precondición: la secuencia no es vacía
-Escolaridad resto(Escolaridad& s);
+Escolaridad resto(Escolaridad& e);
 int largo(Escolaridad e);
 // Precondición: El largo de la secuencia es mayor o igual a K.
 Curso kEsimo(Escolaridad e, int k);
 
 // ================= EXTENSIONES =================
-void insBack(Escolaridad& s, Curso c);
-Curso ultimo(Escolaridad s);
-boolean estaAprobada(Escolaridad s, int numAsignatura);
-int cantidadAprobados(Escolaridad s);
+void insBack(Escolaridad& e, Curso c);
+Curso ultimo(Escolaridad e);
+boolean estaAprobada(Escolaridad e, int numAsignatura);
+int cantidadAprobados(Escolaridad e);
 
 #endif
