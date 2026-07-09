@@ -15,15 +15,22 @@ typedef struct {
 typedef Celda Asignaturas[MAX_ASIG];
 
 // ================= PRIMITIVAS ==================
+// Inicializa el diccionario poniendo todas las celdas en FALSE
 void make(Asignaturas& A);
+
+// Devuelve TRUE si la asignatura existe en esa posición del diccionario arreglo A
 boolean member(Asignaturas A, int numAsig);
-// Precondición: el elemento a insertar no es miembro del diccionario.
+
+// Precondición: la asignatura a insertar no existe en diccionario A
 void insert(Asignaturas& A, Asignatura a);
-// Precondición: el elemento es miembro del diccionario.
+
+// Precondición: la asignatura existe en el diccionario A
 Asignatura find(Asignaturas A, int numAsig);
-// Precondición: el elemento a sustituir es miembro del diccionario.
+
+// Precondición: la asigantura a sustituir existe en diccionario A
 void modify(Asignaturas& A, Asignatura a, int numAsig);
-// Precondición: el elemento es miembro del diccionario.
+
+// Precondición: la asignatura existe en diccionario A
 void delete_(Asignaturas& A, int numAsig);
 
 // ================= EXTENSIONES =================
