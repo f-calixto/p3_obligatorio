@@ -51,7 +51,7 @@ void gradoVertice(Grafo g, int u)
 
 
 
-void dfs(Grafo g, int actual, int destino, boolean visitados[], boolean& encontrado)
+void dfs (Grafo g, int actual, int destino, boolean visitados[], boolean& encontrado)
  {
     visitados[actual] = TRUE;
     if (actual == destino)
@@ -107,7 +107,7 @@ void listarPreviaturas(Grafo g, int u)
 
 
 // Precondición: u pertenece al grafo.
-// Carga en el arreglo "res" todos los números de materias que son previas directas de u
+// Carga en el arreglo "res" todos los números de materias que son previas de u
 void obtenerPrevias(Grafo g, int u, int res[], int &cant)
  {
     cant = 0;
