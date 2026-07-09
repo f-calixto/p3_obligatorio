@@ -2,7 +2,7 @@
 
 
 // Inicializa el diccionario poniendo todas las celdas en FALSE
-void make(Asignaturas& A)
+void make (Asignaturas &A)
 {
     for (int i = 0; i < MAX_ASIG; i++)
     {
@@ -11,7 +11,7 @@ void make(Asignaturas& A)
 }
 
 // Devuelve TRUE si la asignatura existe en esa posición del arreglo
-boolean member(Asignaturas A, int numAsig)
+boolean member (Asignaturas A, int numAsig)
 {
     if (numAsig >= 0 && numAsig < MAX_ASIG)
     {
@@ -21,7 +21,7 @@ boolean member(Asignaturas A, int numAsig)
 }
 
 // Precondición: la asignaturaa a insertar no exitse en diccionario A.
-void insert (Asignaturas& A, Asignatura a)
+void insert (Asignaturas &A, Asignatura a)
 {
     int pos = obtenerNumero(a);
 
@@ -38,14 +38,14 @@ Asignatura find (Asignaturas A, int numAsig)
     return A[numAsig].info;
 }
 
-// Precondición: la asigantura sustituir existe en iccionario A.
-void modify (Asignaturas& A, Asignatura a, int numAsig)
+// Precondición: la asigantura a sustituir existe en iccionario A.
+void modify (Asignaturas &A, Asignatura a, int numAsig)
 {
     A[numAsig].info = a;
 }
 
 // Precondición: la asignatura existe en diccionario A
-void delete_(Asignaturas& A, int numAsig)
+void delete_ (Asignaturas &A, int numAsig)
 {
     A[numAsig].existe = FALSE;
 }
@@ -53,7 +53,7 @@ void delete_(Asignaturas& A, int numAsig)
 // ================= EXTENSIONES =================
 
 // Precondición: la asignatura existe en diccionario A
-void listar(Asignaturas A)
+void listar (Asignaturas A)
 {
     boolean hayMaterias = FALSE;
     printf("\n--- LISTADO DE ASIGNATURAS ---\n");
