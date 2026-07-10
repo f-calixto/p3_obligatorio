@@ -2,9 +2,9 @@
 #define ALUMNO_H
 
 //#include "boolean.h" boolean ya viene incluido en string.h
+//#include "string.h" string.h ya viene incluido en curso.h 
 #include "curso.h"
 #include "escolaridad.h"
-#include "string.h"
 
 typedef struct {
     int ci;
