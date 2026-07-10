@@ -1,7 +1,7 @@
 #ifndef CURSO_H
 #define CURSO_H
 
-#include "boolean.h"
+//#include "boolean.h" string.h ya incluye a boolean
 #include "fecha.h"
 #include "string.h"
 
