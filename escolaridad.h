@@ -1,7 +1,7 @@
 #ifndef ESCOLARIDAD_H
 #define ESCOLARIDAD_H
 
-#include "boolean.h"
+//#include "boolean.h" boolean.h esta incluido en string.h , string.h esta incluido en curso.h
 #include "curso.h"
 
 // ================= Escolaridad (Secuencia Simple) ===============
