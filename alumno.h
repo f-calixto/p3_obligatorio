@@ -1,7 +1,7 @@
 #ifndef ALUMNO_H
 #define ALUMNO_H
 
-#include "boolean.h"
+//#include "boolean.h" boolean ya viene incluido en string.h
 #include "curso.h"
 #include "escolaridad.h"
 #include "string.h"
