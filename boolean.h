@@ -4,4 +4,9 @@
 
 typedef enum { FALSE, TRUE } boolean;
 
+void cargarBoolean(boolean& b);
+void mostrarBoolean(boolean b);
+
+
+
 #endif  // BOOLEAN_H_INCLUDED
