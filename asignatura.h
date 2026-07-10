@@ -1,7 +1,7 @@
 #ifndef ASIGNATURA_H
 #define ASIGNATURA_H
 
-#include "boolean.h"
+//#include "boolean.h"  boolean ya viene incluido en string.h
 #include "string.h"
 
 typedef struct {
