@@ -1,7 +1,18 @@
 #include "alumnos.h"
 #include "asignaturas.h"
 
-void mostrarMenu() {}
+void mostrarMenu() {
+    print("Ingrese un numero de operacion:\n");
+    print("1: Registrar nueva asigantura\n");
+    print("2: Agregar previatura entre 2 asignaturas\n");
+    print("3: Inscribir alumno\n");
+    print("4: Registrar curso finalizado\n");
+    print("5: Listar todas las asignaturas\n");
+    print("6: Listar previas de asignaturas\n");
+    print("7: Mostrar datos de alumno\n");
+    print("8: Mostrar escolaridad de alumno\n");
+    print("9: Salir del programa\n");
+}
 
 int main() {
     boolean continuar = TRUE;
@@ -32,10 +43,10 @@ int main() {
                 break;
             case 9:
                 continuar = FALSE;
-                printf("Saliendo del programa\n");
+                printVerde("\nSaliendo del programa\n");
                 break;
             default:
-                printRojo("Numero de operacion invalida\n");
+                printRojo("\nNumero de operacion invalida\n");
                 break;
         }
     }
