@@ -41,7 +41,7 @@ void inscribirAlumno(Alumnos& alumnos) {
 
 void registrarCursoFinalizado() {}
 
-void listarAsignaturas() {}
+void listarAsignaturas(Asignaturas asignaturas) { listar(asignaturas); }
 
 void listarPrevias() {}
 
@@ -80,7 +80,7 @@ int main() {
                 registrarCursoFinalizado();
                 break;
             case 5:
-                listarAsignaturas();
+                listarAsignaturas(asignaturas);
                 break;
             case 6:
                 listarPrevias();
