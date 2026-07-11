@@ -1,7 +1,7 @@
 #ifndef ASIGNATURA_H
 #define ASIGNATURA_H
 
-//#include "boolean.h"  boolean ya viene incluido en string.h
+// #include "boolean.h"  boolean ya viene incluido en string.h
 #include "string.h"
 
 typedef struct {
@@ -17,5 +17,6 @@ void obtenerNombre(Asignatura a, string& s);
 int obtenerHoras(Asignatura a);
 boolean esOptativa(Asignatura a);
 void asignarNumero(Asignatura& a, int nro);
+void mostrarAsignatura(Asignatura a);
 
 #endif

@@ -30,3 +30,15 @@ int obtenerHoras(Asignatura a) { return a.horas; }
 boolean esOptativa(Asignatura a) { return a.esOptativa; }
 
 void asignarNumero(Asignatura& a, int nro) { a.numero = nro; }
+
+void mostrarAsignatura(Asignatura a) {
+    printf("Nombre: ");
+    print(a.nombre);
+    printf("\nNro: %d\nHoras: %d", a.numero, a.horas);
+    print("\nEs optativa: ");
+    if (a.esOptativa) {
+        print("Si");
+    } else {
+        print("No");
+    }
+}
