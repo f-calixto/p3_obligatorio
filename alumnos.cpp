@@ -64,7 +64,7 @@ void deleteAlumnoCubeta(CubetaAlumnos& c, int cedula) {
     delete aux;
 }
 
-int darCubeta(int cedula) { return cedula % B; }
+int h(int cedula) { return cedula % B; }
 
 // =============== Fin metodos auxiliares =============
 
@@ -74,27 +74,27 @@ void make(Alumnos& A) {
 }
 
 boolean member(Alumnos A, int cedula) {
-    int cubeta = darCubeta(cedula);
+    int cubeta = h(cedula);
     perteneceCubeta(A[cubeta], cedula);
 }
 
 void insert(Alumnos& A, Alumno a) {
     int cedula = obtenerCedula(a);
-    int cubeta = darCubeta(cedula);
+    int cubeta = h(cedula);
     insFrontCubeta(A[cubeta], a);
 }
 
 Alumno find(Alumnos A, int cedula) {
-    int cubeta = darCubeta(cedula);
+    int cubeta = h(cedula);
     return findAlumnoCubeta(A[cubeta], cedula);
 }
 
 void modify(Alumnos& A, Alumno a) {
-    int cubeta = darCubeta(obtenerCedula(a));
+    int cubeta = h(obtenerCedula(a));
     modifyAlumnoCubeta(A[cubeta], a);
 }
 
 void delete_(Alumnos& A, int cedula) {
-    int cubeta = darCubeta(cedula);
+    int cubeta = h(cedula);
     deleteAlumnoCubeta(A[cubeta], cedula);
 }
