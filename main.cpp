@@ -39,7 +39,76 @@ void inscribirAlumno(Alumnos& alumnos) {
     }
 }
 
-void registrarCursoFinalizado() {}
+void registrarCursoFinalizado(Alumnos& alumnos, Asignaturas asignaturas,
+                              Previaturas previaturas) {
+    int ci;
+    print("Ingrese la cedula del alumno: ");
+    scanf("%d", &ci);
+
+    if (!member(alumnos, ci)) {
+        printRojo("El alumno no esta registrado en la academia\n\n");
+        return;
+    }
+
+    Curso cursoARegistrar;
+    crearCurso(cursoARegistrar);
+    int nroAsignatura = obtenerNumAsignatura(cursoARegistrar);
+
+    if (!member(asignaturas, nroAsignatura)) {
+        printRojo("La asignatura no esta registrada\n\n");
+        return;
+    }
+
+    string nombreAsig, nombreCurso;
+    obtenerNombre(find(asignaturas, nroAsignatura), nombreAsig);
+    obtenerNombreAsigantura(cursoARegistrar, nombreCurso);
+    if (!streq(nombreCurso, nombreAsig)) {
+        printRojo(
+            "La asignatura con dicho numero fue ingresada con otro nombre: ");
+        printRojo(nombreAsig);
+        print("\n\n");
+        return;
+    }
+
+    Alumno alumno = find(alumnos, ci);
+    Escolaridad escolaridad = obtenerEscolaridad(alumno);
+
+    if (estaAprobada(escolaridad, nroAsignatura)) {
+        printRojo("La asignatura ya esta aprobada por el alumno\n\n");
+        return;
+    }
+
+    if (!esVacia(escolaridad)) {
+        Curso ult = ultimo(escolaridad);
+        Fecha fechaFinUltimo = obtenerFechaFin(ult);
+        if (!esIgualOMayor(obtenerFechaFin(cursoARegistrar), fechaFinUltimo)) {
+            printRojo(
+                "La fecha de finalizacion debe ser igual o mayor al ultimo "
+                "curso "
+                "registrado\n\n");
+            return;
+        }
+    }
+
+    if (perteneceVertice(previaturas, nroAsignatura)) {
+        int previas[MAX_ASIG];
+        int cantidadPrevias;
+        obtenerPreviasInmediatas(previaturas, nroAsignatura, previas,
+                                 cantidadPrevias);
+
+        for (int i = 0; i < cantidadPrevias; i++) {
+            if (!estaAprobada(escolaridad, previas[i])) {
+                printRojo("Deben estar aprobadas todas las previas\n\n");
+                return;
+            }
+        }
+    }
+
+    insBack(escolaridad, cursoARegistrar);
+    asignarEscolaridad(alumno, escolaridad);
+    modify(alumnos, alumno);
+    printVerde("Curso ingresado con exito\n\n");
+}
 
 void listarAsignaturas(Asignaturas asignaturas) { listar(asignaturas); }
 
@@ -102,7 +171,7 @@ int main() {
                 inscribirAlumno(alumnos);
                 break;
             case 4:
-                registrarCursoFinalizado();
+                registrarCursoFinalizado(alumnos, asignaturas, previaturas);
                 break;
             case 5:
                 listarAsignaturas(asignaturas);

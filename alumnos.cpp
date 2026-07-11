@@ -98,3 +98,5 @@ void delete_(Alumnos& A, int cedula) {
     int cubeta = h(cedula);
     deleteAlumnoCubeta(A[cubeta], cedula);
 }
+
+void asignarEscolaridad(Alumno& a, Escolaridad e) { a.escolaridad = e; }

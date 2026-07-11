@@ -85,8 +85,7 @@ void listarPreviaturas(Previaturas g, int u) {
 
 // Precondición: u pertenece al Previaturas.
 // Carga en el arreglo "res" todos los números de materias que son previas de u
-// ,
-void obtenerPrevias(Previaturas g, int u, int res[], int& cant) {
+void obtenerPreviasInmediatas(Previaturas g, int u, int res[], int& cant) {
     cant = 0;
     for (int i = 0; i < N; i++) {
         if (g[i][u] == TRUE) {
@@ -95,3 +94,5 @@ void obtenerPrevias(Previaturas g, int u, int res[], int& cant) {
         }
     }
 }
+
+void obtenerPreviasCompleto(Previaturas g, int u, int res[], int& cant) {}
