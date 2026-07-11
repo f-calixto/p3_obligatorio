@@ -2,6 +2,8 @@
 
 // =============== Inicio metodos auxiliares =============
 
+void crearCubeta(CubetaAlumnos c) { c = NULL; }
+
 boolean perteneceCubeta(CubetaAlumnos c, int cedula) {
     boolean pertenece = FALSE;
     nodoAlumnos* aux = new nodoAlumnos;
@@ -68,7 +70,7 @@ int darCubeta(int cedula) { return cedula % B; }
 
 void make(Alumnos& A) {
     int i;
-    for (i = 0; i < B; i++) A[i] = NULL;
+    for (i = 0; i < B; i++) crearCubeta(A[i]);
 }
 
 boolean member(Alumnos A, int cedula) {
