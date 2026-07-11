@@ -45,7 +45,32 @@ void listarAsignaturas(Asignaturas asignaturas) { listar(asignaturas); }
 
 void listarPrevias() {}
 
-void mostrarDatosAlumno() {}
+void mostrarDatosAlumno(Alumnos alumnos) {
+    int ci;
+    print("Ingrese la cedula del alumno: ");
+    scanf("%d", &ci);
+
+    if (!member(alumnos, ci)) {
+        printRojo("El alumno no esta registrado en la academia\n\n");
+        return;
+    }
+
+    Alumno alumno;
+    string nombre, apellido, telefono;
+    Escolaridad escolaridad;
+    int cantidadCursos, cantidadAprobadas;
+
+    alumno = find(alumnos, ci);
+    obtenerNombre(alumno, nombre);
+    obtenerApellido(alumno, apellido);
+    obtenerTelefono(alumno, telefono);
+    escolaridad = obtenerEscolaridad(alumno);
+
+    printf("\n   Nombre: %s %s\n", nombre, apellido);
+    printf("\n   Telefono: %s\n", telefono);
+    printf("\n   Cursos registrados: %d\n", largo(escolaridad));
+    printf("\n   Cursos aprobados: %d\n\n", cantidadAprobados(escolaridad));
+}
 
 void mostrarEscolaridadAlumno() {}
 
@@ -86,7 +111,7 @@ int main() {
                 listarPrevias();
                 break;
             case 7:
-                mostrarDatosAlumno();
+                mostrarDatosAlumno(alumnos);
                 break;
             case 8:
                 mostrarEscolaridadAlumno();
