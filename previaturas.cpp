@@ -1,6 +1,6 @@
 #include "previaturas.h"
 
-void crear(Grafo& g) {
+void crear(Previaturas& g) {
     int i = 0;
     for (i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
@@ -9,23 +9,23 @@ void crear(Grafo& g) {
     }
 }
 
-boolean perteneceVertice(Grafo g, int u) {
+boolean perteneceVertice(Previaturas g, int u) {
     if ((u >= 0) && (u < N)) return TRUE;
     return FALSE;
 }
 
-boolean perteneceArista(Grafo g, int u, int v) {
+boolean perteneceArista(Previaturas g, int u, int v) {
     if (perteneceVertice(g, u) && perteneceVertice(g, v))
         return g[u][v];
     else
         return FALSE;
 }
 
-// Precondición: la arista no pertenece al grafo
-void insertarArista(Grafo& g, int u, int v) { g[u][v] = TRUE; }
+// Precondición: la arista no pertenece al Previaturas
+void insertarArista(Previaturas& g, int u, int v) { g[u][v] = TRUE; }
 
-// Precondición: el vértice pertenece al grafo.
-void gradoVertice(Grafo g, int u) {
+// Precondición: el vértice pertenece al Previaturas.
+void gradoVertice(Previaturas g, int u) {
     int cantHabilita = 0;
     int cantPrevias = 0;
     for (int i = 0; i < N; i++) {
@@ -40,7 +40,7 @@ void gradoVertice(Grafo g, int u) {
         u, cantPrevias, cantHabilita);
 }
 
-void dfs(Grafo g, int actual, int destino, boolean visitados[N],
+void dfs(Previaturas g, int actual, int destino, boolean visitados[N],
          boolean encontrado) {
     encontrado = FALSE;
     visitados[actual] = TRUE;
@@ -56,9 +56,9 @@ void dfs(Grafo g, int actual, int destino, boolean visitados[N],
     }
 }
 
-// Precondición: v y u pertenecen al grafo.
+// Precondición: v y u pertenecen al Previaturas.
 // determina si v es olbigatoria para cursar u
-boolean hayCamino(Grafo g, int v, int u) {
+boolean hayCamino(Previaturas g, int v, int u) {
     boolean visitados[N];
     for (int i = 0; i < N; i++) {
         visitados[i] = FALSE;
@@ -68,9 +68,9 @@ boolean hayCamino(Grafo g, int v, int u) {
     return encontrado;
 }
 
-// Precondición: u pertenence al grafo
+// Precondición: u pertenence al Previaturas
 // imrpimre por pantalla la lista d los numeros de las asignaturas previas a u
-void listarPreviaturas(Grafo g, int u) {
+void listarPreviaturas(Previaturas g, int u) {
     boolean tienePrevias = FALSE;
     for (int i = 0; i < N; i++) {
         if (g[i][u] == TRUE) {
@@ -83,10 +83,10 @@ void listarPreviaturas(Grafo g, int u) {
     }
 }
 
-// Precondición: u pertenece al grafo.
+// Precondición: u pertenece al Previaturas.
 // Carga en el arreglo "res" todos los números de materias que son previas de u
 // ,
-void obtenerPrevias(Grafo g, int u, int res[], int& cant) {
+void obtenerPrevias(Previaturas g, int u, int res[], int& cant) {
     cant = 0;
     for (int i = 0; i < N; i++) {
         if (g[i][u] == TRUE) {

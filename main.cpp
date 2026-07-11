@@ -1,9 +1,10 @@
 #include "alumnos.h"
 #include "asignaturas.h"
+#include "previaturas.h"
 
 void mostrarMenu() {
     print("Ingrese un numero de operacion:\n");
-    print("1: Registrar nueva asigantura\n");
+    print("1: Registrar nueva asignatura\n");
     print("2: Agregar previatura entre 2 asignaturas\n");
     print("3: Inscribir alumno\n");
     print("4: Registrar curso finalizado\n");
@@ -14,32 +15,71 @@ void mostrarMenu() {
     print("9: Salir del programa\n");
 }
 
+void registrarAsignatura(Asignaturas& asignaturas) {
+    if (estaCompleto(asignaturas)) {
+        printRojo("Tope de asignaturas alcanzado\n");
+        return;
+    }
+
+    Asignatura nueva;
+    crearAsignatura(nueva);
+}
+
+void agregarPreviatura() {}
+
+void inscribirAlumno() {}
+
+void registrarCursoFinalizado() {}
+
+void listarAsignaturas() {}
+
+void listarPrevias();
+
+void mostrarDatosAlumno() {}
+
+void mostrarEscolaridadAlumno() {}
+
 int main() {
     boolean continuar = TRUE;
+    Asignaturas asignaturas;
+    Alumnos alumnos;
+    Previaturas previaturas;
+
+    make(asignaturas);
+    make(alumnos);
+    crear(previaturas);
 
     while (continuar) {
         int operacion;
 
         mostrarMenu();
-        printf("\nIngrese numero de operacion (1-8 o 9 para salir): ");
+        printf("\nIngrese numero de operacion (1-8) o 9 para salir: ");
         scanf("%d", &operacion);
 
         switch (operacion) {
             case 1:
+                registrarAsignatura(asignaturas);
                 break;
             case 2:
+                agregarPreviatura();
                 break;
             case 3:
+                agregarPreviatura();
                 break;
             case 4:
+                registrarCursoFinalizado();
                 break;
             case 5:
+                listarAsignaturas();
                 break;
             case 6:
+                listarPrevias();
                 break;
             case 7:
+                mostrarDatosAlumno();
                 break;
             case 8:
+                mostrarEscolaridadAlumno();
                 break;
             case 9:
                 continuar = FALSE;
