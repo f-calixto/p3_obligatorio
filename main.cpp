@@ -16,24 +16,34 @@ void mostrarMenu() {
 }
 
 void registrarAsignatura(Asignaturas& asignaturas) {
-    if (estaCompleto(asignaturas)) {
-        printRojo("Tope de asignaturas alcanzado\n");
-        return;
-    }
+    // if (estaCompleto(asignaturas)) {
+    //     printRojo("Tope de asignaturas alcanzado\n");
+    //     return;
+    // }
 
-    Asignatura nueva;
-    crearAsignatura(nueva);
+    // Asignatura nueva;
+    // crearAsignatura(nueva);
 }
 
-void agregarPreviatura() {}
+void agregarPreviatura(Previaturas& previaturas) {}
 
-void inscribirAlumno() {}
+void inscribirAlumno(Alumnos& alumnos) {
+    Alumno nuevo;
+    crearAlumno(nuevo);
+
+    if (member(alumnos, obtenerCedula(nuevo))) {
+        printRojo("El alumno ya esta registrado\n\n");
+    } else {
+        insert(alumnos, nuevo);
+        printVerde("Alumno ingresado correctamente\n\n");
+    }
+}
 
 void registrarCursoFinalizado() {}
 
 void listarAsignaturas() {}
 
-void listarPrevias();
+void listarPrevias() {}
 
 void mostrarDatosAlumno() {}
 
@@ -61,10 +71,10 @@ int main() {
                 registrarAsignatura(asignaturas);
                 break;
             case 2:
-                agregarPreviatura();
+                agregarPreviatura(previaturas);
                 break;
             case 3:
-                agregarPreviatura();
+                inscribirAlumno(alumnos);
                 break;
             case 4:
                 registrarCursoFinalizado();
