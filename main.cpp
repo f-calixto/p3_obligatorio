@@ -15,17 +15,70 @@ void mostrarMenu() {
     print("9: Salir del programa\n");
 }
 
-void registrarAsignatura(Asignaturas& asignaturas) {
-    // if (estaCompleto(asignaturas)) {
-    //     printRojo("Tope de asignaturas alcanzado\n");
-    //     return;
-    // }
-
-    // Asignatura nueva;
-    // crearAsignatura(nueva);
+void registrarAsignatura(Asignaturas &asignaturas) 
+{
+    if (asignaturas.tope >= MAX_ASIG)
+    {
+        printRojo("Error: Se ha alcanzado el tope maximo de asignaturas en el sistema.\n\n");
+        return; //se usa para que el resto de la función NO se ejecute
+    }
+        
+    Asignatura nueva;
+    crearAsignatura(nueva);
+    
+    int nro = obtenerNumero(nueva);
+    
+    if (member(asignaturas, nro))
+    {
+        printRojo("Error: Ya existe una asignatura registrada con ese numero.\n\n");
+    } 
+    else 
+    {
+        insert(asignaturas, nueva);
+        printVerde("Asignatura registrada correctamente en el sistema.\n\n");
+    }
 }
 
-void agregarPreviatura(Previaturas& previaturas) {}
+void agregarPreviatura(Previaturas &previaturas, Asignaturas asignaturas) 
+{
+    int u, v;
+    print("Ingrese el numero de la asignatura PREVIA (u): ");
+    scanf("%d", &u);
+    print("Ingrese el numero de la asignatura DESTINO (v): ");
+    scanf("%d", &v);
+
+    // Validación A: Que ambas existan en el sistema
+    if (!member(asignaturas, u) || !member(asignaturas, v))
+    {
+        printRojo("Error: Al menos una de las asignaturas especificadas no esta registrada.\n\n");
+        return; //se usa para que el resto de la función NO se ejecute
+    }
+
+    // Validación B: Que no sean la misma asgnatura
+    if (u == v)
+    {
+        printRojo("Error: Una asignatura no puede ser previatura de si misma.\n\n");
+        return;
+    }
+
+    // Validación C: Evitar previaturas duplicadas
+    if (perteneceArista(previaturas, u, v)) 
+    {
+        printRojo("Error: Esta relacion de previatura ya se encuentra registrada.\n\n");
+        return; //se usa para que el resto de la función NO se ejecute
+    }
+
+    // Validación D: CONTROL DE CICLOS. Si ya hay camino de v a u, agregar u -> v generará un ciclo 
+    if (hayCamino(previaturas, v, u))
+    {
+        printRojo("Error Invalido: No se puede agregar la previatura porque generaria un ciclo en el plan de estudios.\n\n");
+    }
+    else 
+    {
+        insertarArista(previaturas, u, v);
+        printVerde("Previatura directa agregada de forma exitosa.\n\n");
+    }
+
 
 void inscribirAlumno(Alumnos& alumnos) {
     Alumno nuevo;
@@ -112,7 +165,46 @@ void registrarCursoFinalizado(Alumnos& alumnos, Asignaturas asignaturas,
 
 void listarAsignaturas(Asignaturas asignaturas) { listar(asignaturas); }
 
-void listarPrevias() {}
+void listarPrevias(Previaturas previaturas, Asignaturas asignaturas)
+{
+    int numAsig;
+    print("Ingrese el numero de la asignatura para conocer sus previas: ");
+    scanf("%d", &numAsig);
+
+    // Validación: que la asignatura destino exista
+    if (!member(asignaturas, numAsig)) 
+    {
+        printRojo("Error: La asignatura especificada no existe en el sistema.\n\n");
+        return;
+    }
+
+    boolean tienePrevias = FALSE;
+    Asignatura asigActual = find(asignaturas, numAsig);
+    string nombreDestino;
+    obtenerNombre(asigActual, nombreDestino);
+
+    printf("\n--- TODAS LAS PREVIAS DE: ");
+    print(nombreDestino);
+    printf(" (Nro: %d) ---\n", numAsig);
+
+
+    for (int i = 0; i < N; i++) 
+    {
+        if (i != numAsig && member(asignaturas, i))
+        {
+            if (hayCamino(previaturas, i, numAsig))
+            {
+                Asignatura previa = find(asignaturas, i);
+                string nomPrevia;
+                obtenerNombre(previa, nomPrevia);
+                
+                printf("- Numero: %d | Nombre: ", i);
+                print(nomPrevia);
+                printf("\n");
+                tienePrevias = TRUE;
+            }
+        }
+    }
 
 void mostrarDatosAlumno(Alumnos alumnos) {
     int ci;
@@ -141,7 +233,73 @@ void mostrarDatosAlumno(Alumnos alumnos) {
     printf("\n   Cursos aprobados: %d\n\n", cantidadAprobados(escolaridad));
 }
 
-void mostrarEscolaridadAlumno() {}
+
+void mostrarEscolaridadAlumno(Alumnos alumnos, Asignaturas asignaturas)
+{
+    int ci;
+    print("Ingrese la cedula del alumno para desplegar su escolaridad: ");
+    scanf("%d", &ci);
+
+    // Validación: Que el estudiante exista en la tabla hash
+    if (!member(alumnos, ci))
+    {
+        printRojo("Error: El alumno con la cedula ingresada no esta registrado.\n\n");
+        return;
+    }
+
+    Alumno al = find(alumnos, ci);
+    string nom, ape;
+    obtenerNombre(al, nom);
+    obtenerApellido(al, ape);
+
+    printf("\n========================================================\n");
+    printf("ESCOLARIDAD HISTORICA CRONOLOGICA DE: );
+    print(nom);
+    print(ape);
+    printf(" (ci: %d)", ci);
+    printf("========================================================\n");
+
+    Escolaridad esc = obtenerEscolaridad(al);
+
+    if (esVacia(esc)) 
+    {
+        printf("El alumno no registra cursos realizados hasta la fecha.\n");
+    } 
+    else 
+    {
+        int cantCursos = largo(esc);
+        // Como insBack asegura que las fechas ingresadas sean cronológicas,
+        // recorremos la lista mediante kEsimo desde 1 hasta el largo de la secuencia
+        for (int k = 1; k <= cantCursos; k++) 
+        {
+            Curso cursoNodoK = kEsimo(esc, k);
+            int nroMateria = obtenerNumAsignatura(cursoNodoK);
+            
+            string nombreMateria;
+            obtenerNombreAsigantura(cNode, nombreMateria);
+            
+            printf("Curso %d:\n", k);
+            printf("  - Asignatura: [%d] ", nroMateria);
+            print(nombreMateria);
+            printf("\n  - Fecha Fin: ");
+            mostrarFecha(obtenerFechaFin(cursoNodoK));
+            printf("\n  - Calificacion: %d", obtenerNota(cursoNodoK));
+            
+            // Verificamos si aprobó 
+            if (estaAprobado(cursoNodoK))
+            {
+                printVerde(" -> [APROBADA]\n");
+            } 
+            else 
+            {
+                printRojo(" -> [REPROBADA]\n");
+            }
+            printf("--------------------------------------------------------\n");
+        }
+    }
+    printf("========================================================\n\n");
+}
+
 
 int main() {
     boolean continuar = TRUE;
