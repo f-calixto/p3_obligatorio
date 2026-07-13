@@ -251,7 +251,7 @@ void mostrarEscolaridadAlumno(Alumnos alumnos, Asignaturas asignaturas)
     obtenerApellido(al, ape);
 
     printf("\n========================================================\n");
-    printf("ESCOLARIDAD HISTORICA CRONOLOGICA DE: );
+    printf("ESCOLARIDAD HISTORICA CRONOLOGICA DE: ");
     print(nom);
     print(ape);
     printf("ci: %d", ci);
