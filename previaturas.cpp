@@ -41,7 +41,7 @@ void gradoVertice(Previaturas g, int u) {
 }
 
 void dfs(Previaturas g, int actual, int destino, boolean visitados[N],
-         boolean encontrado) {
+         boolean& encontrado) {
     encontrado = FALSE;
     visitados[actual] = TRUE;
 
@@ -58,13 +58,13 @@ void dfs(Previaturas g, int actual, int destino, boolean visitados[N],
 
 // Precondición: v y u pertenecen al Previaturas.
 // determina si v es olbigatoria para cursar u
-boolean hayCamino(Previaturas g, int v, int u) {
+boolean hayCamino(Previaturas g, int u, int v) {
     boolean visitados[N];
     for (int i = 0; i < N; i++) {
         visitados[i] = FALSE;
     }
     boolean encontrado = FALSE;
-    dfs(g, v, u, visitados, encontrado);
+    dfs(g, u, v, visitados, encontrado);
     return encontrado;
 }
 
@@ -85,14 +85,12 @@ void listarPreviaturas(Previaturas g, int u) {
 
 // Precondición: u pertenece al Previaturas.
 // Carga en el arreglo "res" todos los números de materias que son previas de u
-void obtenerPreviasInmediatas(Previaturas g, int u, int res[], int& cant) {
+void obtenerPreviasInmediatas(Previaturas g, int u, int res[N], int& cant) {
     cant = 0;
     for (int i = 0; i < N; i++) {
-        if (g[i][u] == TRUE) {
+        if (g[u][i] == TRUE) {
             res[cant] = i;
             cant++;
         }
     }
 }
-
-void obtenerPreviasCompleto(Previaturas g, int u, int res[], int& cant) {}

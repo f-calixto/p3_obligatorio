@@ -26,12 +26,6 @@ void strcop(string& s1, string s2);
 /* lee el string s desde teclado */
 void scan(string& s);
 
-/* concatena el contenido de s2 al final de s1 */
-void strcon(string& s1, string s2);
-
-/* intercambia los contenidos de s1 y s2 */
-void strswp(string& s1, string& s2);
-
 /* imprime el string s por pantalla */
 void print(string s);
 
@@ -43,14 +37,5 @@ void printVerde(string s);
 
 /* determina si los strings s1 y s2 son iguales */
 boolean streq(string s1, string s2);
-
-/* Indica si el string representa un entero valido */
-boolean esEnteroValido(string s);
-
-boolean esEnteroPositivo(string str);
-
-// convierte el string s a un entero
-// precondicion: es un entero valido
-int strAEntero(string s);
 
 #endif  // STRING_H_INCLUDED

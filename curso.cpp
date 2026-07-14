@@ -22,7 +22,7 @@ void obtenerNombreAsigantura(Curso c, string& s) {
     strcop(s, c.nombreAsignatura);
 }
 
-Fecha obtenerFechaFin(Curso c, string& s) { return c.fechaFin; }
+Fecha obtenerFechaFin(Curso c) { return c.fechaFin; }
 
 int obtenerNota(Curso c) { return c.nota; }
 

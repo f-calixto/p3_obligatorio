@@ -54,8 +54,6 @@ boolean hayCamino(Previaturas g, int v, int u);
 void listarPreviaturas(Previaturas g, int u);
 
 // Precondición: u pertenence al Previaturas
-void obtenerPreviasInmediatas(Previaturas g, int u, int res[], int& cant);
-
-void obtenerPreviasCompleto(Previaturas g, int u, int res[], int& cant);
+void obtenerPreviasInmediatas(Previaturas g, int u, int res[N], int& cant);
 
 #endif

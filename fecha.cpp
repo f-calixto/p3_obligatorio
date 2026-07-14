@@ -1,7 +1,6 @@
 #include "fecha.h"
 
 void cargarFecha(Fecha& fecha) {
-    printf("\n Ingrese dia, mes y año");
     printf("\n");
 
     scanf("%d", &fecha.dia);

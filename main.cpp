@@ -1,9 +1,8 @@
-#include "menu.h"
 #include <stdio.h>
 
-int main()
-{
-    
+#include "menu.h"
+
+int main() {
     boolean continuar = TRUE;
     Asignaturas asignaturas;
     Alumnos alumnos;
@@ -25,7 +24,7 @@ int main()
                 registrarAsignatura(asignaturas);
                 break;
             case 2:
-                agregarPreviatura(previaturas);
+                agregarPreviatura(previaturas, asignaturas);
                 break;
             case 3:
                 inscribirAlumno(alumnos);
@@ -37,13 +36,13 @@ int main()
                 listarAsignaturas(asignaturas);
                 break;
             case 6:
-                listarPrevias();
+                listarPrevias(previaturas, asignaturas);
                 break;
             case 7:
                 mostrarDatosAlumno(alumnos);
                 break;
             case 8:
-                mostrarEscolaridadAlumno();
+                mostrarEscolaridadAlumno(alumnos, asignaturas);
                 break;
             case 9:
                 continuar = FALSE;
