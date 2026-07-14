@@ -14,10 +14,11 @@ void insFront(Escolaridad& e, Curso c) {
 }
 
 boolean esVacia(Escolaridad e) {
+    boolean es = FALSE;
     if (e.prim == NULL && e.ult == NULL) {
-        return TRUE;
+        es = TRUE;
     }
-    return FALSE;
+    return es;
 }
 
 Curso primero(Escolaridad e) { return e.prim->info; }

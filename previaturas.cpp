@@ -10,34 +10,31 @@ void crear(Previaturas& g) {
 }
 
 boolean perteneceVertice(Previaturas g, int u) {
-    if ((u >= 0) && (u < N)) return TRUE;
-    return FALSE;
+    boolean pertenece = FALSE;
+    if ((u >= 0) && (u < N)) pertenece = TRUE;
+    return pertenece;
 }
 
 boolean perteneceArista(Previaturas g, int u, int v) {
-    if (perteneceVertice(g, u) && perteneceVertice(g, v))
-        return g[u][v];
-    else
-        return FALSE;
+    boolean pertenece = FALSE;
+
+    if (perteneceVertice(g, u) && perteneceVertice(g, v)) pertenece = TRUE;
+
+    return pertenece;
 }
 
 // Precondición: la arista no pertenece al Previaturas
 void insertarArista(Previaturas& g, int u, int v) { g[u][v] = TRUE; }
 
 // Precondición: el vértice pertenece al Previaturas.
-void gradoVertice(Previaturas g, int u) {
-    int cantHabilita = 0;
-    int cantPrevias = 0;
+int gradoVertice(Previaturas g, int u) {
+    int cantAristas = 0;
+
     for (int i = 0; i < N; i++) {
-        if (g[u][i] == TRUE)
-            cantHabilita++;
-        else
-            cantPrevias++;
+        if (g[u][i] == TRUE || g[i][u] == TRUE) cantAristas++;
     }
-    printf(
-        "Asignatura %d -> cantidad de asiganturas previas: %d | cantidad de "
-        "asignaturas que habilita: %d\n",
-        u, cantPrevias, cantHabilita);
+
+    return cantAristas;
 }
 
 void dfs(Previaturas g, int actual, int destino, boolean visitados[N],
@@ -48,10 +45,12 @@ void dfs(Previaturas g, int actual, int destino, boolean visitados[N],
     if (actual == destino) {
         encontrado = TRUE;
     } else {
-        for (int i = 0; i < N && !encontrado; i++) {
+        int i = 0;
+        while (i < N && !encontrado) {
             if (g[actual][i] == TRUE && !visitados[i]) {
                 dfs(g, i, destino, visitados, encontrado);
             }
+            i++;
         }
     }
 }
@@ -66,21 +65,6 @@ boolean hayCamino(Previaturas g, int u, int v) {
     boolean encontrado = FALSE;
     dfs(g, u, v, visitados, encontrado);
     return encontrado;
-}
-
-// Precondición: u pertenence al Previaturas
-// imrpimre por pantalla la lista d los numeros de las asignaturas previas a u
-void listarPreviaturas(Previaturas g, int u) {
-    boolean tienePrevias = FALSE;
-    for (int i = 0; i < N; i++) {
-        if (g[i][u] == TRUE) {
-            printf("%d ", i);
-            tienePrevias = TRUE;
-        } else {
-            if (!tienePrevias)
-                printf("\n La asignatura %d NO tiene previaturas\n", i);
-        }
-    }
 }
 
 // Precondición: u pertenece al Previaturas.

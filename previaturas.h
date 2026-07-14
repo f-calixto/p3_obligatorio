@@ -41,17 +41,13 @@ boolean perteneceArista(Previaturas g, int u, int v);
 void insertarArista(Previaturas& g, int u, int v);
 
 // Precondición: el vértice pertenece al Previaturas.
-void gradoVertice(Previaturas g, int u);
+int gradoVertice(Previaturas g, int u);
 
 // ================= EXTENSIONES =================
 
 // Precondición: v y u pertenecen al Previaturas.
 // determina si v es olbigatoria para cursar u
 boolean hayCamino(Previaturas g, int v, int u);
-
-// Precondición: u pertenence al Previaturas
-// imrpimre por pantalla la lista d los numeros de las asignaturas previas a u
-void listarPreviaturas(Previaturas g, int u);
 
 // Precondición: u pertenence al Previaturas
 void obtenerPreviasInmediatas(Previaturas g, int u, int res[N], int& cant);
