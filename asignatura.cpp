@@ -32,10 +32,10 @@ boolean esOptativa(Asignatura a) { return a.esOptativa; }
 void asignarNumero(Asignatura& a, int nro) { a.numero = nro; }
 
 void mostrarAsignatura(Asignatura a) {
-    printf("Nombre: ");
+    printf("    Nombre: ");
     print(a.nombre);
-    printf("\nNro: %d\nHoras: %d", a.numero, a.horas);
-    print("\nEs optativa: ");
+    printf("\n    Nro: %d\n    Horas: %d", a.numero, a.horas);
+    print("\n    Es optativa: ");
     if (a.esOptativa) {
         print("Si");
     } else {

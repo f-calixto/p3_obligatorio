@@ -2,15 +2,15 @@
 
 void mostrarMenu() {
     print("Ingrese un numero de operacion:\n");
-    print("1: Registrar nueva asignatura\n");
-    print("2: Agregar previatura entre 2 asignaturas\n");
-    print("3: Inscribir alumno\n");
-    print("4: Registrar curso finalizado\n");
-    print("5: Listar todas las asignaturas\n");
-    print("6: Listar previas de asignaturas\n");
-    print("7: Mostrar datos de alumno\n");
-    print("8: Mostrar escolaridad de alumno\n");
-    print("9: Salir del programa\n");
+    print("  1: Registrar nueva asignatura\n");
+    print("  2: Agregar previatura entre 2 asignaturas\n");
+    print("  3: Inscribir alumno\n");
+    print("  4: Registrar curso finalizado\n");
+    print("  5: Listar todas las asignaturas\n");
+    print("  6: Listar previas de asignaturas\n");
+    print("  7: Mostrar datos de alumno\n");
+    print("  8: Mostrar escolaridad de alumno\n");
+    print("  9: Salir del programa\n");
 }
 
 void registrarAsignatura(Asignaturas& asignaturas) {
@@ -183,7 +183,7 @@ void listarPrevias(Previaturas previaturas, Asignaturas asignaturas) {
 
     printf("\n--- TODAS LAS PREVIAS DE: ");
     print(nombreDestino);
-    printf(" (Nro: %d) ---\n", numAsig);
+    printf(" (Nro: %d) ---\n\n", numAsig);
 
     for (int i = 0; i < N; i++) {
         if (i != numAsig && member(asignaturas, i)) {

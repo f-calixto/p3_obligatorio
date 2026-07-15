@@ -83,7 +83,8 @@ void delete_(Asignaturas& A, int numAsig) {
 // ================= EXTENSIONES =================
 
 void listar(Asignaturas A) {
-    printf("\n--- LISTADO DE ASIGNATURAS ---\n");
+    print("\n--- LISTADO DE ASIGNATURAS ---\n");
+    print("---\n");
     if (A.tope == 0) {
         printRojo("No hay asignaturas registradas en el sistema.\n");
     } else {
