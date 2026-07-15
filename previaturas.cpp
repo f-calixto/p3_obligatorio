@@ -18,7 +18,7 @@ boolean perteneceVertice(Previaturas g, int u) {
 boolean perteneceArista(Previaturas g, int u, int v) {
     boolean pertenece = FALSE;
 
-    if (perteneceVertice(g, u) && perteneceVertice(g, v)) pertenece = TRUE;
+    if (perteneceVertice(g, u) && perteneceVertice(g, v)) pertenece = g[u][v];
 
     return pertenece;
 }
